@@ -6,7 +6,7 @@ const heightInput = document.querySelector('#height');
 const formatInput = document.querySelector('#format');
 const qualityInput = document.querySelector('#quality');
 const screenshotEl = document.querySelector('#screenshot');
-const YOUR_API_KEY = 'your_api_key_here';
+const YOUR_API_KEY = 'exponential_api_secret header';
 
 // Listen for form submit event
 form.addEventListener('submit', async (e) => {
@@ -19,9 +19,6 @@ form.addEventListener('submit', async (e) => {
   const format = formatInput.value;
   const quality = qualityInput.value;
 
-  // Show the loading spinner
-  screenshotEl.classList.add('loading');
-
   // Call the API to generate the screenshot
   const response = await fetch(`https://api.apiflash.com/v1/urlto${format}?access_key=${YOUR_API_KEY}&url=${url}&height=${height}&width=${width}&quality=${quality}`);
 
@@ -31,14 +28,12 @@ form.addEventListener('submit', async (e) => {
     const objectURL = URL.createObjectURL(blob);
     const img = new Image();
     img.onload = () => {
-      screenshotEl.classList.remove('loading');
       screenshotEl.querySelector('img').setAttribute('src', objectURL);
       screenshotEl.querySelector('img').style.display = 'block';
     };
     img.src = objectURL;
   } else {
     // If the response is not successful, show an error message
-    screenshotEl.classList.remove('loading');
     screenshotEl.innerHTML = `<p>Error generating screenshot. Please try again later.</p>`;
   }
 });

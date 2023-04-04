@@ -4,107 +4,121 @@
   <meta charset="UTF-8">
   <title>Website Screenshot API Demo</title>
   <style>
-    /* Styles for the input form */
-    form {
-      display: flex;
-      flex-direction: column;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    h1 {
-      text-align: center;
-    }
-    label {
-      margin-bottom: 0.5rem;
-    }
 
-    input[type="text"], select, input[type="number"], input[type="range"] {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      max-width: 100%;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+h1{
+  text-align: center;
+}
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-    input[type="submit"] {
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      border-radius: 0.25rem;
-      padding: 0.75rem;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
 
-    input[type="submit"]:hover {
-      background-color: #2980b9;
-    }
+input[type="text"],
+input[type="number"],
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
 
-    /* Styles for the screenshot image and loading spinner */
-    .spinner {
-      border: 16px solid #f3f3f3;
-      border-top: 16px solid #3498db;
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      animation: spin 2s linear infinite;
-      margin: auto;
-    }
+select {
+  width: auto;
+}
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+button[type="submit"] {
+  background-color: #008CBA;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
-    #screenshot {
-      margin: 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
+button[type="submit"]:hover {
+  background-color: #006d9c;
+}
 
-    #screenshot img {
-      max-width: 100%;
-      height: auto;
-      display: none;
-    }
+#screenshot {
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 60%;
+}
 
-    #screenshot.loading img {
-      display: none;
-    }
+#screenshot.loading:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #008CBA;
+  animation: spin 1s ease-in-out infinite;
+}
 
-    #screenshot.loading .spinner {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+#screenshot img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
   </style>
 </head>
 <body>
-  <h1>Website Screenshot API Demo</h1>
+  <h1>Website Screenshot Generator</h1>
   <form>
     <label for="url">Website URL:</label>
-    <input type="text" id="url" name="url" placeholder="https://example.com" required>
-    
+    <input type="text" id="url" name="url" required />
+    <br />
     <label for="width">Width:</label>
-    <input type="number" id="width" name="width" value="1200" min="100" max="1920">
-    
+    <input type="number" id="width" name="width" value="1024" />
+    <br />
     <label for="height">Height:</label>
-    <input type="number" id="height" name="height" value="800" min="100" max="1080">
-    
+    <input type="number" id="height" name="height" value="768" />
+    <br />
     <label for="format">Format:</label>
     <select id="format" name="format">
-      <option value="jpeg">JPEG</option>
       <option value="png">PNG</option>
-      <option value="pdf">PDF</option>
+      <option value="jpeg">JPEG</option>
     </select>
-    
+    <br />
     <label for="quality">Quality:</label>
-    <input type="range" id="quality" name="quality" value="80" min="0" max="100">
-    
-    <input type="submit" value="Generate
+    <input type="number" id="quality" name="quality" value="80" />
+    <br />
+    <button type="submit">Generate Screenshot</button>
+  </form>
+  <div id="screenshot"></div>
+      </body>
+      </html>
