@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
   const quality = qualityInput.value;
 
   // Call the API to generate the screenshot
-  const response = await fetch(`https://api.apiflash.com/v1/urlto${format}?access_key=${YOUR_API_KEY}&url=${url}&height=${height}&width=${width}&quality=${quality}`);
+  const response = await fetch(`https://api.apiflash.com/v1/urlto${format}?access_key=${YOUR_API_KEY}&wait_until=page_loaded&url=${url}&height=${height}&width=${width}&quality=${quality}`);
 
   // If the response is successful, show the screenshot image
   if (response.ok) {
