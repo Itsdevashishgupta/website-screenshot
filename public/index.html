@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Screenshot API Widget</title>
+   
+  </head>
+  
+  <body>
+    <h1>Website Screenshot API Widget</h1>
+    <form id="form">
+      <label for="url">Enter Website URL:</label>
+      <input type="text" id="url" name="url" required>
+      <button type="submit">Get Screenshot</button>
+    </form>
+    <div id="screenshot"></div>
+    <script src="app.js"></script>
+    <style>body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1rem;
+    }
+    
+    label {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      margin-bottom: 1rem;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    button[type="submit"] {
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #3E8E41;
+    }
+    
+    #screenshot {
+      margin: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    #screenshot img {
+      max-width: 100%;
+      height: auto;
+    }
+    </style>
+  </body>
+</html>
