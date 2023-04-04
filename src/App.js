@@ -6,7 +6,7 @@ const heightInput = document.querySelector('#height');
 const formatInput = document.querySelector('#format');
 const qualityInput = document.querySelector('#quality');
 const screenshotEl = document.querySelector('#screenshot');
-const YOUR_API_KEY = 'exponential_api_secret header';
+const YOUR_API_KEY = '1db300025c004dddb972d8cda25b89a6';
 
 // Listen for form submit event
 form.addEventListener('submit', async (e) => {
